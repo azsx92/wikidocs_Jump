@@ -28,8 +28,8 @@ public class QuestionController {
         return "question list";
     }
 
-    @GetMapping(value = "/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
+    @GetMapping(value = "/detatil/{id}")
+    public String detatil(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
         Question question = this.questionService.getQuestion(id);
         model.addAttribute("question", question);
         return "question_detatil";
