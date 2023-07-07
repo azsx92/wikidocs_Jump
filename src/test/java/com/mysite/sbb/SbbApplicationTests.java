@@ -3,6 +3,7 @@ package com.mysite.sbb;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 
 import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
@@ -27,14 +28,14 @@ class SbbApplicationTests {
 	%sbb%: "sbb"를 포함하는 문자열
 	*/
 	@Test
+	@Commit
 	void testJpa() {
-		 Optional<Question> oq = this.questionRepository.findById(2);
-		 assertTrue(oq.isPresent());
-		 Question q = oq.get();
+		Optional<Answer> oa = this.answerRepository.findById(1);
 
-		Answer a = new Answer();
-		a.setContent("네 자동으로 생성됩니다.");
-		a.setQuestion(q); //어떤 질문의 답변인지 알기위해서 Ouestion 객체가 필요하다.
+		assertTrue(oa.isPresent());
+		Answer a = oa.get();
+		assertEquals(2, a.getQuestion().getId());
+
 	}
 
 
