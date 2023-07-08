@@ -13,15 +13,15 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Bean
-    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests().requestMatchers(new AntPathRequestMatcher("/**")).permitAll()
-                .and()
-                    .csrf().ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))
-                .and()
-                    .headers()
-                    .addHeaderWriter(new XFrameOptionsHeaderWriter(
-                            XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN));
-        return http.build();
-    }
+//    @Bean
+//    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http.authorizeHttpRequests().requestMatchers(new AntPathRequestMatcher("/**")).permitAll()
+//                .and()
+//                    .csrf().ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))
+//                .and()
+//                    .headers()
+//                    .addHeaderWriter(new XFrameOptionsHeaderWriter(
+//                            XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN));
+//        return http.build();
+//    }
 }
