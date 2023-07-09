@@ -1,4 +1,4 @@
-package com.mysite.sbb.question;
+package com.mysite.sbb;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "entity not found")
 public class DataNotFoundException extends RuntimeException {
     private static final long serialVersionUID = 1L;
-
-    public DataNotFoundException(String messege) {
-        super(messege);
+    public DataNotFoundException(String message) {
+        super(message);
     }
 }

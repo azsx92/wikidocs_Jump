@@ -1,6 +1,6 @@
 package com.mysite.sbb.user;
 
-import com.mysite.sbb.question.DataNotFoundException;
+import com.mysite.sbb.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

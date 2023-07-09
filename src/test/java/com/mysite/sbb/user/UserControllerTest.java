@@ -1,30 +1,19 @@
 package com.mysite.sbb.user;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.validation.BindingResult;
 
 import javax.validation.Valid;
 
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
-@Controller
-@RequestMapping("/user")
-public class UserController {
-
+class UserControllerTest {
     private final UserService userService;
 
-    @GetMapping("/signup")
-    public String signup(UserCreateForm userCreateForm) {
-        return "signup_form";
+    UserControllerTest(UserService userService) {
+        this.userService = userService;
     }
 
-    @PostMapping("/signup")
+    @Test
     public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "signup_form";
@@ -51,10 +40,5 @@ public class UserController {
 
 
         return "redirect:/";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login_form";
     }
 }
