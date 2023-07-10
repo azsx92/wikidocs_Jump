@@ -2,7 +2,8 @@ package com.mysite.sbb.question;
 
 import com.mysite.sbb.DataNotFoundException;
 import com.mysite.sbb.answer.Answer;
-import com.mysite.sbb.user.SiteUser;
+import com.mysite.sbb.user.Site_User;
+import lombok.RequiredArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -44,7 +45,8 @@ public class QuestionService {
         }
     }
 
-    public void create(String subject, String content, SiteUser user) {
+    public void create(String subject, String content, Site_User
+ user) {
         Question q = new Question();
         q.setSubject(subject);
         q.setContent(content);
@@ -64,8 +66,8 @@ public class QuestionService {
         this.questionRepository.delete(question);
     }
 
-    public void vote(Question question, SiteUser siteUser) {
-        question.getVoter().add(siteUser);
+    public void vote(Question question, Site_User site_user) {
+        question.getVoter().add(site_user);
         this.questionRepository.save(question);
     }
 
@@ -75,9 +77,9 @@ public class QuestionService {
             @Override
             public Predicate toPredicate(Root<Question> q, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 query.distinct(true); // 중복을 제거
-                Join<Question, SiteUser> u1 = q.join("author",JoinType.LEFT);
+                Join<Question, Site_User> u1 = q.join("author",JoinType.LEFT);
                 Join<Question, Answer> a = q.join("answerList",JoinType.LEFT);
-                Join<Answer, SiteUser> u2 = q.join("author",JoinType.LEFT);
+                Join<Answer, Site_User> u2 = q.join("author",JoinType.LEFT);
                 return cb.or(cb.like(q.get("subject"),"%" + kw + "% "),  //제목
                         cb.like(q.get("content"), "%" + kw + "%"),   //내용
                         cb.like(u1.get("username"), "%" + kw + "%"),   //질문 작성자

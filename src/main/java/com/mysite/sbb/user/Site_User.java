@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class SiteUser {
+public class Site_User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -4,7 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import com.mysite.sbb.answer.Answer;
-import com.mysite.sbb.user.SiteUser;
+import com.mysite.sbb.user.Site_User;
 import com.mysite.sbb.user.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -57,8 +57,8 @@ public class QuestionController {
         if (bindingResult.hasErrors()) {
             return "question_form";
         }
-        SiteUser siteUser = this.userService.getUser(principal.getName());
-        this.questionService.create(questionForm.getSubject(), questionForm.getContent(), siteUser);
+        Site_User site_user = this.userService.getUser(principal.getName());
+        this.questionService.create(questionForm.getSubject(), questionForm.getContent(), site_user);
         return "redirect:/question/list";
     }
 
@@ -104,8 +104,8 @@ public class QuestionController {
     @GetMapping("/vote/{id}")
     public String questionVote(Principal principal, @PathVariable("id") Integer id) {
         Question question = this.questionService.getQuestion(id);
-        SiteUser siteUser = this.userService.getUser(principal.getName());
-        this.questionService.vote(question, siteUser);
+        Site_User site_user = this.userService.getUser(principal.getName());
+        this.questionService.vote(question, site_user);
         return String.format("redirect:/question/detail/%s", id);
     }
 

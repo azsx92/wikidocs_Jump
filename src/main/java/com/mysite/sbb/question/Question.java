@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.mysite.sbb.answer.Answer;
-import com.mysite.sbb.user.SiteUser;
+import com.mysite.sbb.user.Site_User;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -40,10 +40,10 @@ public class Question {
     private List<Answer> answerList;
 
     @ManyToOne
-    private SiteUser author;
+    private Site_User author;
 
     private LocalDateTime modifyDate;
 
     @ManyToMany
-    Set<SiteUser> voter;
+    Set<Site_User> voter;
 }

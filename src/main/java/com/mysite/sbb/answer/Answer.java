@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.mysite.sbb.question.Question;
-import com.mysite.sbb.user.SiteUser;
+import com.mysite.sbb.user.Site_User;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -34,10 +34,10 @@ public class Answer {
     private Question question;
 
     @ManyToOne
-    private SiteUser author;
+    private Site_User author;
 
     private LocalDateTime modifyDate;
 
     @ManyToMany
-    Set<SiteUser> voter;
+    Set<Site_User> voter;
 }

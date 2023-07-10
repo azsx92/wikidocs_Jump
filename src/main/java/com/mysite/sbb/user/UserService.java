@@ -17,8 +17,8 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
 
-    public SiteUser create(String username, String email, String password) {
-        SiteUser user = new SiteUser();
+    public Site_User create(String username, String email, String password) {
+        Site_User user = new Site_User();
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
@@ -26,12 +26,12 @@ public class UserService {
         return user;
     }
 
-    public SiteUser getUser(String username) {
-        Optional<SiteUser> siteUser = this.userRepository.findByusername(username);
-        if (siteUser.isPresent()) {
-            return siteUser.get();
+    public Site_User getUser(String username) {
+        Optional<Site_User> site_user = this.userRepository.findByusername(username);
+        if (site_user.isPresent()) {
+            return site_user.get();
         } else {
-            throw new DataNotFoundException("siteuser not found");
+            throw new DataNotFoundException("site_user not found");
         }
     }
 }
